@@ -5,16 +5,16 @@
 
     <parent>
         <groupId>de.dreadlabs</groupId>
-        <artifactId>cdct-experiment</artifactId>
+        <artifactId>cdct</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>azure-blob-storage-sdk</artifactId>
+    <artifactId>cdct-abss</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
-    <name>azure-blob-storage-sdk</name>
+    <name>CDCT: Azure Blob Storage SDK</name>
     <description>This sub-module encapsulates SDK-based interaction with the Azure Blob Storage.</description>
 
     <developers>
@@ -42,6 +42,6 @@
     </dependencyManagement>
 
     <modules>
-        <module>abss-recorder</module>
+        <module>cdct-abss-recorder</module>
     </modules>
 </project>

@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>de.dreadlabs</groupId>
-        <artifactId>azure-blob-storage-sdk</artifactId>
+        <artifactId>cdct-abss</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -14,7 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>abss-recorder</name>
+    <name>CDCT: Azure Blob Storage SDK - Recorder</name>
     <description>Module to record requests to and responses from the Azure Blob Storage API.</description>
 
     <developers>

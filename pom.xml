@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.dreadlabs</groupId>
-    <artifactId>cdct-experiment</artifactId>
+    <artifactId>cdct</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
-    <name>cdct-experiment</name>
+    <name>CDCT: Consumer-driven contract testing</name>
     <description>This project experiments with consumer-driven contract testing.</description>
 
     <developers>
@@ -71,6 +71,6 @@
     </build>
 
     <modules>
-        <module>azure-blob-storage-sdk</module>
+        <module>cdct-abss</module>
     </modules>
 </project>

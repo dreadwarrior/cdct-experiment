@@ -1,4 +1,4 @@
-package de.dreadlabs
+package de.dreadlabs.cdct.abss.recorder
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
