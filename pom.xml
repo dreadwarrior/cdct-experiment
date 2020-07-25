@@ -1,28 +1,76 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>de.dreadlabs</groupId>
-  <artifactId>cdct-experiment</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <groupId>de.dreadlabs</groupId>
+    <artifactId>cdct-experiment</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  <packaging>pom</packaging>
+    <packaging>pom</packaging>
 
-  <name>cdct-experiment</name>
-  <description>This project experiments with consumer-driven contract testing.</description>
+    <name>cdct-experiment</name>
+    <description>This project experiments with consumer-driven contract testing.</description>
 
-  <contributors>
-    <contributor>
-      <name>Thomas Juhnke</name>
-      <email>contract@dreadlabs.de</email>
-      <roles>
-        <role>Core Maintainer</role>
-      </roles>
-    </contributor>
-  </contributors>
+    <developers>
+        <developer>
+            <name>Thomas Juhnke</name>
+            <email>contract@dreadlabs.de</email>
+            <roles>
+                <role>Core Maintainer</role>
+            </roles>
+        </developer>
+    </developers>
 
-  <modules>
-    <module>azure-blob-storage-sdk</module>
-  </modules>
+    <properties>
+        <wiremock.version>2.27.1</wiremock.version>
+        <junit.version>5.6.2</junit.version>
+        <maven-surefire.version>2.22.2</maven-surefire.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock-jre8-standalone</artifactId>
+                <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <modules>
+        <module>azure-blob-storage-sdk</module>
+    </modules>
 </project>
