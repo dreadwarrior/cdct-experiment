@@ -1,0 +1,50 @@
+= Azure Blob Storage SDK
+
+:axel-hodler: https://medium.com/@axelhodler/integration-tests-for-third-party-apis-dab67c52e352
+:spring-cc: https://github.com/spring-cloud/spring-cloud-contract
+
+This sub-module demonstrates how to capture requests to and responses from the
+Azure Blob Storage API by using the Java SDK provided by Microsoft.
+
+The request and responses serve to create PACT files and tests for:
+
+. running nightly builds to detect changes in the third-party API
+. mocking API integration in application code for isolated and fast testing
+cycles
+
+== Background
+
+The article about {axel-hodler}[Integration Tests for Third Party APIs] of Axel
+Hodler shows how to approach consumer-driven contract testing HTTP APIs.
+
+It shows how to craft request and responses and use {spring-cc}[Spring Cloud
+Contract] for test generation.
+
+The Azure Blob Storage Java SDK abstracts the HTTP layer and thus hides the
+low-level request and response details.
+
+Furthermore, the developer don't have or want to invest time in reading the
+Azure Blob Storage HTTP documentation.
+
+So a recorder is needed to capture requests send and responses received by the
+Azure Blob Storage Java SDK.
+
+== Usage
+
+TODO
+
+== Support
+
+TODO
+
+== Roadmap
+
+TODO
+
+== Contributing
+
+TODO
+
+== License
+
+link:LICENSE.adoc[MIT]

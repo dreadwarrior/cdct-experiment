@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.dreadlabs</groupId>
-  <artifactId>cdct-experiment</artifactId>
+  <artifactId>azure-blob-storage-sdk</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
-  <name>cdct-experiment</name>
-  <description>This project experiments with consumer-driven contract testing.</description>
+  <name>azure-blob-storage-sdk</name>
+  <description>This sub-module encapsulates SDK-based interaction with the Azure Blob Storage.</description>
 
   <contributors>
     <contributor>
@@ -21,8 +21,4 @@
       </roles>
     </contributor>
   </contributors>
-
-  <modules>
-    <module>azure-blob-storage-sdk</module>
-  </modules>
 </project>

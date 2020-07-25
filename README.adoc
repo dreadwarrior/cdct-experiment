@@ -1,5 +1,9 @@
 = Consumer-driven contract testing - A playground project
 
+:antoniya-atanasova: https://www.novatec-gmbh.de/en/blog/introduction-microservices-testing-consumer-driven-contract-testing-pact/
+:axel-hodler: https://medium.com/@axelhodler/integration-tests-for-third-party-apis-dab67c52e352
+:kristine-jetzke: https://medium.com/kreuzwerker-gmbh/consumer-driven-contract-tests-lessons-learned-b4e1ac471d0c
+
 This project serves as an experimental playground for consumer-driven contract
 testing.
 
@@ -51,9 +55,9 @@ TODO
 
 == Authors and acknowledgment
 
-* Antoniya Atanasova, Novatec Consulting GmbH: https://www.novatec-gmbh.de/en/blog/introduction-microservices-testing-consumer-driven-contract-testing-pact/[Introduction to Microservices Testing and Consumer Driven Contract Testing with PACT]
-* Axel Hodler: https://medium.com/@axelhodler/integration-tests-for-third-party-apis-dab67c52e352[Integration Tests for Third Party APIs]
-* Kristine Jetzke, kreuzwerker GmbH: https://medium.com/kreuzwerker-gmbh/consumer-driven-contract-tests-lessons-learned-b4e1ac471d0c[Consumer-Driven Contract Tests: Lessons Learned]
+* Antoniya Atanasova, Novatec Consulting GmbH: {antoniya-atanasova}[Introduction to Microservices Testing and Consumer Driven Contract Testing with PACT]
+* Axel Hodler: {axel-hodler}[Integration Tests for Third Party APIs]
+* Kristine Jetzke, kreuzwerker GmbH: {kristine-jetzke}[Consumer-Driven Contract Tests: Lessons Learned]
 
 == License
 
