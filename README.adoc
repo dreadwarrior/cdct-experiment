@@ -1,0 +1,60 @@
+= Consumer-driven contract testing - A playground project
+
+This project serves as an experimental playground for consumer-driven contract
+testing.
+
+It demonstrates how to generate requests send to a third-party remote web
+service.
+
+These requests can be used to create a Java module, which is integrated into
+a CI pipeline and is continuously running on a nightly basis to detect changes
+in the third-party API as early as possible.
+
+== Background
+
+While working on a current project, which involves some Azure cloud services
+the current test implementations are slowing down continuous testing cycles
+during development because they are using the third-party services directly.
+
+This experiment tries to find a way how to come up with a setup which allows
+fast and isolated test runs during development, and how to ensure the API
+integration will work on the production system without directly issuing tests
+against it during the development phase.
+
+== Installation
+
+TODO
+
+== Usage
+
+TODO
+
+== Support
+
+If you want to run your own experiment by using this project as your starting
+point, feel free to ask questions by using the issue tracker.
+
+Please note that no questions can be answered for services that are not used in
+the current project version, as it is too likely that the project maintainers
+do not know these services well enough.
+
+In this case, feel free to create a pull request which enhances this project
+with the API or service in question.
+
+== Roadmap
+
+TODO
+
+== Contributing
+
+TODO
+
+== Authors and acknowledgment
+
+* Antoniya Atanasova, Novatec Consulting GmbH: https://www.novatec-gmbh.de/en/blog/introduction-microservices-testing-consumer-driven-contract-testing-pact/[Introduction to Microservices Testing and Consumer Driven Contract Testing with PACT]
+* Axel Hodler: https://medium.com/@axelhodler/integration-tests-for-third-party-apis-dab67c52e352[Integration Tests for Third Party APIs]
+* Kristine Jetzke, kreuzwerker GmbH: https://medium.com/kreuzwerker-gmbh/consumer-driven-contract-tests-lessons-learned-b4e1ac471d0c[Consumer-Driven Contract Tests: Lessons Learned]
+
+== License
+
+link:LICENSE.adoc[MIT]
