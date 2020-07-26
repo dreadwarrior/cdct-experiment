@@ -5,7 +5,10 @@ Storage API by using the Java SDK provided by Microsoft.
 
 == Usage
 
-TODO
+. Create Azure DevTestLabs environment
+. Copy `src/test/resources/recorder.properties.dist` to `src/test/resources/recorder.properties`
+. Adjust settings in `src/test/resources/recorder.properties`
+. Run `mvn clean install`
 
 == Support
 
