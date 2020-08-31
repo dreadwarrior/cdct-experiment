@@ -18,7 +18,7 @@ in the third-party API as early as possible.
 
 While working on a current project, which involves some Azure cloud services
 the current test implementations are slowing down continuous testing cycles
-during development because they are using the third-party services directly.
+during development because they are directly using third-party services.
 
 This experiment tries to find a way how to come up with a setup which allows
 fast and isolated test runs during development, and how to ensure the API

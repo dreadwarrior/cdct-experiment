@@ -1,7 +1,12 @@
 = Azure Blob Storage SDK
 
+:imagesdir: ./doc/img
+
 :axel-hodler: https://medium.com/@axelhodler/integration-tests-for-third-party-apis-dab67c52e352
 :spring-cc: https://github.com/spring-cloud/spring-cloud-contract
+:ms-azure-free: https://azure.microsoft.com/en-us/free/
+:azure-dr-concept: https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy#redundancy-in-the-primary-region
+:azure-at-doc: https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal
 
 This sub-module demonstrates how to capture requests to and responses from the
 Azure Blob Storage API by using the Java SDK provided by Microsoft.
@@ -14,7 +19,7 @@ cycles
 
 == Background
 
-The article about {axel-hodler}[Integration Tests for Third Party APIs] of Axel
+The article about {axel-hodler}[Integration Tests for Third Party APIs] by Axel
 Hodler shows how to approach consumer-driven contract testing HTTP APIs.
 
 It shows how to craft request and responses and use {spring-cc}[Spring Cloud
@@ -23,15 +28,195 @@ Contract] for test generation.
 The Azure Blob Storage Java SDK abstracts the HTTP layer and thus hides the
 low-level request and response details.
 
-Furthermore, the developer don't have or want to invest time in reading the
-Azure Blob Storage HTTP documentation.
+Probably the developer don't have time to read the Azure Blob Storage HTTP
+documentation and can't afford to implement an HTTP client by herself.
 
-So a recorder is needed to capture requests send and responses received by the
-Azure Blob Storage Java SDK.
+This recorder module serves as an example how to capture requests and responses
+of the Azure Blob Storage communication by using the Azure Blob Storage Java
+SDK.
 
 == Usage
 
-TODO
+In order to capture the Azure Blob Storage communication, you have to create
+a valid Azure account and set up the required entities on the Azure cloud
+platform. By following the step-by-step guide below you end up with all
+requirments to try out the recorder component on your own.
+
+[#_create_azure_account]
+=== Create Azure account
+
+{ms-azure-free}[Microsoft Azure] can be evaluated for free during the first 12
+months of your subscription.
+
+.Azure free account landing page
+image::001-azure-start-free-landingpage.png[]
+
+Click on "Start free", then login with your Microsoft account or create a new
+one.
+
+.Sign in with your Microsoft account
+image::002-microsoft-signin.png[]
+
+////
+TODO: add screenshots between "signin" and "profile information" input when
+TODO: using the "free" plan (not possible with Microsoft accounts which
+TODO: applied for the Free plan before).
+
+If asked to create a free Azure account, confirm by clicking on "Start free".
+
+.Create free Azure account
+image::003-create-azure-account.png[]
+
+After the second screen opened, proceed by clicking "Start free".
+
+.Really create free Azure account
+image::004-confirm-azure-account-creation.png[]
+////
+
+Provide your profile information in step 1 and proceed by clicking "Next".
+
+.Signup step 1: Profile information
+image::005-azure-signup-step1.png[]
+
+When asked for identity verification by phone, opt-in to "Text me".
+
+.Signup step 2: Identity verification
+image::006-azure-signup-step2.png[]
+
+You should receive a text message, enter the verification code and proceed by
+clicking "Verify"
+
+.Signup step 2: Verify Identity verification
+image::007-azure-signup-step2-verify.png[]
+
+Provide your credit card information and proceed by clicking "Next"
+
+.Signup step 3: Credit card information
+image::008-azure-signup-step3.png[]
+
+Finally, activate the checkbox starting with "I agree to..." and finish by
+clicking "Sign up"
+
+.Signup step 4: Agreement
+image::009-azure-signup-step4.png[]
+
+After all, you should eventually be presented to a "Welcome to Azure!"
+wizard.
+
+.Azure Welcome screen
+image::010-welcome-to-azure.png[]
+
+=== Create Azure Blob Storage resources
+
+IMPORTANT: When creating and using Azure resources without a _Free_ subscription
+plan your credit card will be charged by Microsoft Azure cloud platform.
+
+==== Storage account
+
+Point your mouse cursor to the "Storage accounts" tile and click "+ Create" in
+the appearing tooltip.
+
+.Create Storage account
+image::101-create-storage-account.png[]
+
+While at the "Basics" tab of the "Create storage account" wizard, select or
+create a _Resource group_, choose a Azure-globally unique _Storage account name_
+and choose a _Location_ which match your needs.
+
+For the _Performance_, _Account kind_, _Replication_ and _Blob access tier_
+settings select a combination to keep the costs at a minimum. Use the inline
+context help icons (_i_) to gain more information.
+
+[quote, Excerpt of the inline context help icon tooltip of "Performance"]
+____
+Standard storage accounts are backed by magnetic drives and provide the lowest
+cost per GB.
+____
+
+
+[quote, Excerpt of the inline context help icon tooltip of "Account kind"]
+____
+Blob storage accounts are specialized for storing blob data and support choosing
+an access tier, which allows you to specify how frequently data in the account
+is accessed. Choose an access tier that matches your storage needs and optimizes
+costs.
+____
+
+[quote, 'Excerpt of the {azure-dr-concept}[Data redundancy concept documentation]']
+____
+Locally redundant storage (LRS) copies your data synchronously three times
+within a single physical location in the primary region. LRS is the least
+expensive replication option, but is not recommended for applications requiring
+high availability.
+____
+
+[quote, 'Excerpt of the {azure-at-doc}[Azure Blob storage access tiers documentation]']
+____
+Data in the cool access tier can tolerate slightly lower availability, but still
+requires high durability, retrieval latency, and throughput characteristics
+similar to hot data. For cool data, a slightly lower availability service-level
+agreement (SLA) and higher access costs compared to hot data are acceptable
+trade-offs for lower storage costs.
+____
+
+NOTE: The recorder will perform read and write operations. The _Cool_ access tier
+option is probably useful in archive scenarios, but our experiment needs good
+availability and throughput characteristics.
+
+image::102-basics.png[]
+
+Continue by clicking "Next: Networking >". Go with the default settings as we
+are going to store only test data which does not require any special security
+considerations.
+
+IMPORTANT: If you plan to test the recorder with personal and/or private data,
+assets or other sensitive information ensure to check the Azure documentation
+and *adjust the settings accordingly*.
+
+image::103-networking.png[]
+
+Proceed by clicking "Next: Data protection >". No special settings need to be
+enabled here, again. The data we're going to use is for demonstration purposes
+only.
+
+image::104-data-protection.png[]
+
+Continue with clicking "Next: Advanced >". This step does not require any
+special options being set. Leave the defaults as shown in the screenshot below.
+
+image::105-advanced.png[]
+
+You can safely skip the step "Next: Tags >" as this allows you to define some
+meta data on the storage account which is not useful in the moment.
+
+Finish the wizard by clicking "Review + create". Review your settings and click
+"Create" to confirm creation of the storage account.
+
+NOTE: As a reference, the template which was offered in the link
+"Download a template for automation" at the bottom of the screen is included
+within this project at `cdc-abss/doc/templates/storage-account/`.
+
+image::106-confirm-creation.png[]
+
+The Azure cloud platform deploys a storage account with the configured settings
+and notifies you if the deployment completed. Click on "Go to resource" to open
+the storage account resource.
+
+image::107-deployment-complete.png[]
+
+
+==== Storage container
+
+A storage container is needed to write and read data with the Azure Storage SDK.
+
+Switch to _Blob service_ / _Containers_ and click _+ Container_ to create one.
+
+image::201-create-container.png[]
+
+Enter a name for the container, keep the _Public access level_ at *Private* and
+confirm the creation by clicking "Create".
+
+image::202-new-container.png[]
 
 == Support
 
