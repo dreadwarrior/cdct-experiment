@@ -5,11 +5,29 @@ Storage API by using the Java SDK provided by Microsoft.
 
 == Usage
 
-. <<../README.adoc#_create_azure_account,Create an Azure account>>
 . Copy `src/test/resources/recorder.properties.dist` to
 `src/test/resources/recorder.properties`
+. <<../README.adoc#_create_azure_account,Create an Azure account>>
 . Adjust settings in `src/test/resources/recorder.properties`
 . Run `mvn clean install`
+
+=== Convert SAS connection string to recorder endpoint
+
+To allow recording the Azure Blob Storage SD communication, the SAS connection
+string must be adjusted accordingly.
+
+For example the SAS connection string:
+
+    BlobEndpoint=https://yourblobcontainer.blob.core.windows.net/;SharedAccessSignature=sv=...
+
+Needs to be adjusted to:
+
+    BlobEndpoint=http://127.0.0.1:8080/;SharedAccessSignature=...
+
+The original `BlobEndpoint` value must be set to the `record_url` configuration
+key in the `recorder.properties`:
+
+    record_url=https://yourblobcontainer.blob.core.windows.net/
 
 == Support
 

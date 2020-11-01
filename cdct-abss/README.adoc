@@ -218,6 +218,28 @@ confirm the creation by clicking "Create".
 
 image::202-new-container.png[]
 
+==== Shared access signature
+
+To programmatically access the container you should use the _Settings_ /
+_Shared access signature_ module of the storage account to create an appropriate
+connection string.
+
+The option _Allowed resource types_ constrains the usage to the level of
+operation. Only _Object_ needs to be enabled.
+
+You can keep the default values of all other fields or adjust if you like.
+
+image::301-sas.png[]
+
+Click "Generate SAS and connection string" and copy the value from field
+_Connection string_.
+
+image::302-sas-copy.png[]
+
+IMPORTANT: The name of the container and the SAS connection string must be set
+in the fields `connection_string` and `container_name` of the file
+`recorder.properties` in `cdct-abss-recorder/src/test/resources`.
+
 == Support
 
 TODO
